@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <h1 class="text-center m-3">Welcome To  Weather App</h1>
+        <div class="row text-center">
+            <span class="d-block p-2 text-bg-primary">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Enter your City" name="city"/>
+                    <button type="submit" class="btn-success">Enter</button>
+                </form>
+            </span>
+        </div>
+        <br>
+        <div class="row bg-info-subtle">
+            <div class="col text-start">
+                <h1>Now</h1>
+                <h2>Date:{{day}}</h2>
+                <h3>{{city}} City</h3>
+                <h3>Passing {{description}}</h3>
+                <h3>Temperature:  {{temp}} <sup>o</sup>C</h3>
+                <h3>Wind: {{speed}} ms<sup>-1</sup></h3>
+            </div>
+            <div class="col text-start">
+                <table>
+                    <tbody>
+                    </tbody>
+                    <tr>
+                        <th>Location:</th>
+                        <td>{{city}}</td>
+                    </tr>
+                    <tr>
+                        <th>Current Time:</th>
+                        <td>{% now "h:i:s A" %}</td>
+                    </tr>
+                    <tr>
+                        <th>Latest Report:</th>
+                        <td>{{day}}</td>
+                    </tr>
+                    <tr>
+                        <th>Visibility:</th>
+                        <td>{{visibility}} km</td>
+                    </tr>
+                    <tr>
+                        <th>Humility:</th>
+                        <td>{{humidity}}%</td>
+                    </tr>
+                    <tr>
+                        <th>Feels Like:</th>
+                        <td>{{feels_like}} <sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <th>Minimum Temperature:</th>
+                        <td>{{temp_min}} <sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <th>Maximum Temperature:</th>
+                        <td>{{temp_max}} <sup>o</sup>C</td>
+                    </tr>
+                    <tr>
+                        <th>Pressure:</th>
+                        <td>{{pressure}} hPa</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
